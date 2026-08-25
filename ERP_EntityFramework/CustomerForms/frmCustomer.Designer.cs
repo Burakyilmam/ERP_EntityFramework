@@ -48,6 +48,9 @@
             // 
             grdvCustomer.GridControl = grdCustomer;
             grdvCustomer.Name = "grdvCustomer";
+            grdvCustomer.OptionsBehavior.ReadOnly = true;
+            grdvCustomer.OptionsDetail.EnableMasterViewMode = false;
+            grdvCustomer.OptionsSelection.MultiSelect = true;
             grdvCustomer.OptionsView.ShowGroupPanel = false;
             // 
             // frmCustomer

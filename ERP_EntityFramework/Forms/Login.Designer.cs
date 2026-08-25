@@ -131,8 +131,11 @@
             Controls.Add(btnLogin);
             Controls.Add(labelControl2);
             Controls.Add(labelControl1);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             Margin = new System.Windows.Forms.Padding(4);
+            MaximizeBox = false;
             Name = "frmLogin";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Login";
             ((System.ComponentModel.ISupportInitialize)chckRememberMe.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)edPassword.Properties).EndInit();

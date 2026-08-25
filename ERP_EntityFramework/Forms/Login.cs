@@ -17,10 +17,6 @@ namespace ERP_EntityFramework
         {
             InitializeComponent();
 
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-
             btnEye = edPassword.Properties.Buttons[0];
             btnUser = edUsername.Properties.Buttons[0];
             btnLock = edPassword.Properties.Buttons[1];

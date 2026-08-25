@@ -43,6 +43,17 @@
             ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(components);
             imgIcons = new DevExpress.Utils.ImageCollection(components);
+            acProductionMain = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            acProduction = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            acProductionOrder = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            acHumanResources = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            acEmployee = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            acDepartmens = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            acJobs = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            acManagement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            acUsers = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            acRoles = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            acAuthority = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)accordionControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)xtraTabbedMdiManager1).BeginInit();
@@ -52,18 +63,18 @@
             // accordionControl1
             // 
             accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
-            accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] { acHome, acMainCustomer, acMainStock });
+            accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] { acHome, acMainCustomer, acMainStock, acProductionMain, acHumanResources, acManagement });
             accordionControl1.Location = new System.Drawing.Point(0, 0);
             accordionControl1.Name = "accordionControl1";
             accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.AutoCollapse;
             accordionControl1.ShowFilterControl = DevExpress.XtraBars.Navigation.ShowFilterControl.Always;
-            accordionControl1.Size = new System.Drawing.Size(214, 553);
+            accordionControl1.Size = new System.Drawing.Size(263, 553);
             accordionControl1.TabIndex = 0;
             accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
             // acHome
             // 
-            acHome.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("accordionControlElement1.ImageOptions.Image");
+            acHome.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("acHome.ImageOptions.Image");
             acHome.Name = "acHome";
             acHome.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             acHome.Text = "Home";
@@ -71,7 +82,6 @@
             // acMainCustomer
             // 
             acMainCustomer.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] { acCustomer, acTedarikci });
-            acMainCustomer.Expanded = true;
             acMainCustomer.Name = "acMainCustomer";
             acMainCustomer.Text = "Cari";
             // 
@@ -92,7 +102,6 @@
             // acMainStock
             // 
             acMainStock.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] { acProduct, acCategory, acUnit, acStock });
-            acMainStock.Expanded = true;
             acMainStock.Name = "acMainStock";
             acMainStock.Text = "Stok";
             // 
@@ -128,10 +137,10 @@
             // 
             ribbonControl1.ExpandCollapseItem.Id = 0;
             ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem });
-            ribbonControl1.Location = new System.Drawing.Point(214, 0);
+            ribbonControl1.Location = new System.Drawing.Point(263, 0);
             ribbonControl1.MaxItemId = 1;
             ribbonControl1.Name = "ribbonControl1";
-            ribbonControl1.Size = new System.Drawing.Size(720, 61);
+            ribbonControl1.Size = new System.Drawing.Size(671, 61);
             // 
             // xtraTabbedMdiManager1
             // 
@@ -148,6 +157,72 @@
             imgIcons.Images.SetKeyName(5, "exporttopdf_16x16.png");
             imgIcons.Images.SetKeyName(6, "exporttohtml_16x16.png");
             imgIcons.Images.SetKeyName(7, "printer_16x16.png");
+            // 
+            // acProductionMain
+            // 
+            acProductionMain.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] { acProduction, acProductionOrder });
+            acProductionMain.Name = "acProductionMain";
+            acProductionMain.Text = "Üretim";
+            // 
+            // acProduction
+            // 
+            acProduction.Name = "acProduction";
+            acProduction.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            acProduction.Text = "Üretim";
+            // 
+            // acProductionOrder
+            // 
+            acProductionOrder.Name = "acProductionOrder";
+            acProductionOrder.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            acProductionOrder.Text = "İş Emirleri";
+            // 
+            // acHumanResources
+            // 
+            acHumanResources.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] { acEmployee, acDepartmens, acJobs });
+            acHumanResources.Name = "acHumanResources";
+            acHumanResources.Text = "İnsan Kaynakları";
+            // 
+            // acEmployee
+            // 
+            acEmployee.Name = "acEmployee";
+            acEmployee.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            acEmployee.Text = "Personeller";
+            // 
+            // acDepartmens
+            // 
+            acDepartmens.Name = "acDepartmens";
+            acDepartmens.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            acDepartmens.Text = "Departmanlar";
+            // 
+            // acJobs
+            // 
+            acJobs.Name = "acJobs";
+            acJobs.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            acJobs.Text = "Görevler";
+            // 
+            // acManagement
+            // 
+            acManagement.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] { acUsers, acRoles, acAuthority });
+            acManagement.Name = "acManagement";
+            acManagement.Text = "Yönetim";
+            // 
+            // acUsers
+            // 
+            acUsers.Name = "acUsers";
+            acUsers.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            acUsers.Text = "Kullanıcılar";
+            // 
+            // acRoles
+            // 
+            acRoles.Name = "acRoles";
+            acRoles.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            acRoles.Text = "Roller";
+            // 
+            // acAuthority
+            // 
+            acAuthority.Name = "acAuthority";
+            acAuthority.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            acAuthority.Text = "Yetkiler";
             // 
             // frmHome
             // 
@@ -182,5 +257,16 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement acUnit;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acStock;
         private DevExpress.Utils.ImageCollection imgIcons;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement acProductionMain;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement acProduction;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement acProductionOrder;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement acHumanResources;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement acEmployee;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement acDepartmens;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement acJobs;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement acManagement;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement acUsers;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement acRoles;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement acAuthority;
     }
 }

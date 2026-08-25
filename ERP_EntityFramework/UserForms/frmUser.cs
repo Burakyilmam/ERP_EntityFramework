@@ -1,17 +1,13 @@
-﻿using DevExpress.XtraGrid.Views.Base;
-using ERP_EntityFramework_Business.Services;
+﻿using ERP_EntityFramework_Business.Services;
 using ERP_EntityFramework_Entities;
-using ERP_EntityFramework_UI.UserForms;
-using System;
-using System.Linq;
-using System.Windows.Controls;
+using ERP_EntityFramework_UI.Functions;
+using System.Windows.Forms;
 
 namespace ERP_EntityFramework_UI
 {
     public partial class frmUser : DevExpress.XtraEditors.XtraForm
     {
         private readonly IUserService _userService;
-        public User selectedUser;
 
         public frmUser(IUserService userService)
         {
@@ -25,66 +21,75 @@ namespace ERP_EntityFramework_UI
 
         private void InitEvents()
         {
-            grdUser.DoubleClick += GrdUser_DoubleClick;
+            grdvUser.KeyDown += GrdvUser_KeyDown;
         }
 
-        private void GrdUser_DoubleClick(object sender, EventArgs e)
+        private void GrdvUser_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
-            GetSelectedUser();
+            if (e.KeyCode == Keys.Home)
+            {
+                grdvUser.GetFirstRow();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.End)
+            {
+                grdvUser.GetLastRow();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.M)
+            {
+                grdvUser.GetMiddleRow();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.PageUp)
+            {
+                grdvUser.GetPreviousRow();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.PageDown)
+            {
+                grdvUser.GetNextRow();
+                e.Handled = true;
+            }
         }
 
         public User GetSelectedUser()
         {
-            selectedUser = grdvUser.GetFocusedRow() as User;
-            return selectedUser;
+            return Generic.GetSelected<User>(grdvUser);
         }
 
         public void GetUsers()
         {
             var users = _userService.ListAll();
+
             grdUser.DataSource = users;
         }
 
         public void DeleteUser()
         {
-            int[] selectedUsers = grdvUser.GetSelectedRows();
-
-            if (selectedUsers.Length == 0) return;
-
-            grdvUser.BeginUpdate();
-
-            foreach (int selectedUser in selectedUsers.OrderByDescending(x => x))
-            {
-                User deletedUser = grdvUser.GetRow(selectedUser) as User;
-
-                if (deletedUser == null) continue;
-
-                _userService.Delete(deletedUser);
-            }
-
-            grdvUser.EndUpdate();
+            Generic.DeleteSelected<User>(grdvUser, user => _userService.Delete(user));
 
             GetUsers();
         }
 
         public void ExportToExcel()
         {
-            grdvUser.ExportToXlsx("Users.xlsx");
+            Generic.ExportToFile(grdvUser, "Excel Dosyaları|*.xlsx");
         }
 
         public void ExportToPdf()
         {
-            grdvUser.ExportToPdf("Users.pdf");
+            Generic.ExportToFile(grdvUser, "PDF Dosyaları|*.pdf");
         }
 
         public void ExportToHTML()
         {
-            grdvUser.ExportToHtml("Users.html");
+            Generic.ExportToFile(grdvUser, "HTML Dosyaları|*.html");
         }
 
         public void Print()
         {
-            grdvUser.Print();
+            Generic.Print(grdvUser);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace ERP_EntityFramework_UI.UserForms
             btnAdd.Click += BtnAdd_Click;
         }
 
-        private void BtnAdd_Click(object sender, EventArgs e)
+        void Save()
         {
             if (string.IsNullOrWhiteSpace(edUsername.Text) || string.IsNullOrWhiteSpace(edPassword.Text))
             {
@@ -62,6 +62,8 @@ namespace ERP_EntityFramework_UI.UserForms
             {
                 _user.Username = edUsername.Text;
                 //_user.PasswordHash = edPassword.Text;
+                _user.UpdateDate = DateTime.Now;
+                _user.UpdatedBy = Statics.User.Username;
 
                 _userService.Update(_user);
 
@@ -70,6 +72,11 @@ namespace ERP_EntityFramework_UI.UserForms
 
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            Save();
         }
     }
 }

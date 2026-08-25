@@ -4,6 +4,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraReports.Design;
 using ERP_EntityFramework_Business.Services;
 using ERP_EntityFramework_Entities;
+using ERP_EntityFramework_UI.CustomerForms;
 using ERP_EntityFramework_UI.UserForms;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -20,13 +21,11 @@ namespace ERP_EntityFramework_UI
         private RibbonPage _customerPage;
 
         private readonly IServiceProvider _serviceProvider;
-        private readonly ISessionService _sessionService;
 
         public frmHome(ISessionService sessionService, IServiceProvider serviceProvider)
         {
             InitializeComponent();
 
-            _sessionService = sessionService;
             _serviceProvider = serviceProvider;
 
             GetDashboardButtons();
@@ -40,9 +39,10 @@ namespace ERP_EntityFramework_UI
 
         private void InitEvents()
         {
-            acCustomer.Click += AcCustomer_Click;
-            acTedarikci.Click += AcTedarikci_Click;
             acHome.Click += AcHome_Click;
+            acCustomer.Click += AcCustomer_Click;
+            acUsers.Click += AcUsers_Click;
+            acTedarikci.Click += AcTedarikci_Click;
         }
 
         private void InitRibbon()
@@ -277,21 +277,75 @@ namespace ERP_EntityFramework_UI
                 Caption = "Yenile",
                 ImageOptions = { Image = imgIcons.Images[0] }
             };
+
+            btnCustomerRefresh.ItemClick += (s, e) =>
+            {
+                var customerForm = MdiChildren.OfType<frmCustomer>().FirstOrDefault();
+                if (customerForm == null) return;
+                customerForm.GetCustomers();
+            };
+
             var btnCustomerNew = new BarButtonItem
             {
                 Caption = "Yeni",
                 ImageOptions = { Image = imgIcons.Images[1] }
             };
+
+            btnCustomerNew.ItemClick += (s, e) =>
+            {
+                var customerForm = MdiChildren.OfType<frmCustomer>().FirstOrDefault();
+
+                if (customerForm == null) return;
+
+                var customerService = _serviceProvider.GetRequiredService<ICustomerService>();
+
+                var form = new frmCustomerAdd(customerService);
+
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    customerForm.GetCustomers();
+                }
+            };
+
             var btnCustomerEdit = new BarButtonItem
             {
                 Caption = "Düzenle",
                 ImageOptions = { Image = imgIcons.Images[2] }
             };
 
+            btnCustomerEdit.ItemClick += (s, e) =>
+            {
+                var customerForm = MdiChildren.OfType<frmCustomer>().FirstOrDefault();
+
+                if (customerForm == null) return;
+
+                var customer = customerForm.GetSelectedCustomer();
+
+                if (customer == null) return;
+
+                var customerService = _serviceProvider.GetRequiredService<ICustomerService>();
+
+                var form = new frmCustomerAdd(customerService, customer);
+
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    customerForm.GetCustomers();
+                }
+            };
+
             var btnCustomerDelete = new BarButtonItem
             {
                 Caption = "Sil",
                 ImageOptions = { Image = imgIcons.Images[3] }
+            };
+
+            btnCustomerDelete.ItemClick += (s, e) =>
+            {
+                var customerForm = MdiChildren.OfType<frmCustomer>().FirstOrDefault();
+
+                if (customerForm == null) return;
+
+                customerForm.DeleteCustomer();
             };
 
             customerGroup.ItemLinks.Add(btnCustomerRefresh);
@@ -306,21 +360,59 @@ namespace ERP_EntityFramework_UI
                 Caption = "Excel'e Aktar",
                 ImageOptions = { Image = imgIcons.Images[4] }
             };
+
+            btnCustomerExportExcel.ItemClick += (s, e) =>
+            {
+                var customerform = MdiChildren.OfType<frmCustomer>().FirstOrDefault();
+
+                if (customerform == null) return;
+
+                customerform.ExportToExcel();
+            };
+
             var btnCustomerExportPdf = new BarButtonItem
             {
                 Caption = "PDF'ye Aktar",
                 ImageOptions = { Image = imgIcons.Images[5] }
             };
+
+            btnCustomerExportPdf.ItemClick += (s, e) =>
+            {
+                var customerform = MdiChildren.OfType<frmCustomer>().FirstOrDefault();
+
+                if (customerform == null) return;
+
+                customerform.ExportToPdf();
+            };
+
             var btnCustomerExportHTML = new BarButtonItem
             {
                 Caption = "HTML'ye Aktar",
                 ImageOptions = { Image = imgIcons.Images[6] }
             };
 
+            btnCustomerExportHTML.ItemClick += (s, e) =>
+            {
+                var customerform = MdiChildren.OfType<frmCustomer>().FirstOrDefault();
+
+                if (customerform == null) return;
+
+                customerform.ExportToHTML();
+            };
+
             var btnCustomerPrint = new BarButtonItem
             {
                 Caption = "Yazdır",
                 ImageOptions = { Image = imgIcons.Images[7] }
+            };
+
+            btnCustomerPrint.ItemClick += (s, e) =>
+            {
+                var customerform = MdiChildren.OfType<frmCustomer>().FirstOrDefault();
+
+                if (customerform == null) return;
+
+                customerform.Print();
             };
 
             customerGroup2.ItemLinks.Add(btnCustomerExportExcel);
@@ -341,12 +433,17 @@ namespace ERP_EntityFramework_UI
 
         private void AcCustomer_Click(object sender, EventArgs e)
         {
+            OpenMdiForm<frmCustomer>(_customerPage); 
+        }
+
+        private void AcUsers_Click(object sender, EventArgs e)
+        {
             OpenMdiForm<frmUser>(_userPage);
         }
 
         private void AcTedarikci_Click(object sender, EventArgs e)
         {
-            OpenMdiForm<frmCustomer>(_customerPage);
+            
         }
     }
 }

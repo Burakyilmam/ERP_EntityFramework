@@ -32,13 +32,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUserAdd));
             lblUsername = new DevExpress.XtraEditors.LabelControl();
             edUsername = new DevExpress.XtraEditors.TextEdit();
+            userBindingSource = new System.Windows.Forms.BindingSource(components);
             lblPassword = new DevExpress.XtraEditors.LabelControl();
             edPassword = new DevExpress.XtraEditors.TextEdit();
             btnAdd = new DevExpress.XtraEditors.SimpleButton();
-            userBindingSource = new System.Windows.Forms.BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)edUsername.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)edPassword.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)userBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)edPassword.Properties).BeginInit();
             SuspendLayout();
             // 
             // lblUsername
@@ -56,6 +56,10 @@
             edUsername.Name = "edUsername";
             edUsername.Size = new System.Drawing.Size(188, 22);
             edUsername.TabIndex = 1;
+            // 
+            // userBindingSource
+            // 
+            userBindingSource.DataSource = typeof(ERP_EntityFramework_Entities.User);
             // 
             // lblPassword
             // 
@@ -75,15 +79,11 @@
             // btnAdd
             // 
             btnAdd.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            btnAdd.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("simpleButton1.ImageOptions.SvgImage");
+            btnAdd.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("btnAdd.ImageOptions.SvgImage");
             btnAdd.Location = new System.Drawing.Point(153, 74);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new System.Drawing.Size(65, 36);
             btnAdd.TabIndex = 2;
-            // 
-            // userBindingSource
-            // 
-            userBindingSource.DataSource = typeof(ERP_EntityFramework_Entities.User);
             // 
             // frmUserAdd
             // 
@@ -95,11 +95,14 @@
             Controls.Add(lblPassword);
             Controls.Add(edUsername);
             Controls.Add(lblUsername);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "frmUserAdd";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "frmUserAdd";
             ((System.ComponentModel.ISupportInitialize)edUsername.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)edPassword.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)userBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)edPassword.Properties).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
