@@ -4,6 +4,7 @@ using ERP_EntityFramework.DataAccess.Repositories;
 using ERP_EntityFramework_Business.Managers;
 using ERP_EntityFramework_Business.Services;
 using ERP_EntityFramework_UI;
+using ERP_EntityFramework_UI.Forms;
 using ERP_EntityFramework_UI.UserForms;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -41,6 +42,7 @@ namespace ERP_EntityFramework
             services.AddTransient<frmUser>();
             services.AddTransient<frmUserAdd>();
             services.AddTransient<frmCustomer>();
+            services.AddTransient<frmCalendar>();
 
             var serviceProvider = services.BuildServiceProvider();
 

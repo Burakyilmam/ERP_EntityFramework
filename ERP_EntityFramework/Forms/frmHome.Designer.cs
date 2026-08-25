@@ -40,9 +40,6 @@
             acCategory = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             acUnit = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             acStock = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(components);
-            imgIcons = new DevExpress.Utils.ImageCollection(components);
             acProductionMain = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             acProduction = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             acProductionOrder = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -54,6 +51,12 @@
             acUsers = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             acRoles = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             acAuthority = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            acOthers = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            acCalendar = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            acCalculator = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(components);
+            imgIcons = new DevExpress.Utils.ImageCollection(components);
             ((System.ComponentModel.ISupportInitialize)accordionControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)xtraTabbedMdiManager1).BeginInit();
@@ -63,12 +66,12 @@
             // accordionControl1
             // 
             accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
-            accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] { acHome, acMainCustomer, acMainStock, acProductionMain, acHumanResources, acManagement });
+            accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] { acHome, acMainCustomer, acMainStock, acProductionMain, acHumanResources, acManagement, acOthers });
             accordionControl1.Location = new System.Drawing.Point(0, 0);
             accordionControl1.Name = "accordionControl1";
             accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.AutoCollapse;
             accordionControl1.ShowFilterControl = DevExpress.XtraBars.Navigation.ShowFilterControl.Always;
-            accordionControl1.Size = new System.Drawing.Size(263, 553);
+            accordionControl1.Size = new System.Drawing.Size(312, 553);
             accordionControl1.TabIndex = 0;
             accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -132,31 +135,6 @@
             acStock.Name = "acStock";
             acStock.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             acStock.Text = "Stok";
-            // 
-            // ribbonControl1
-            // 
-            ribbonControl1.ExpandCollapseItem.Id = 0;
-            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem });
-            ribbonControl1.Location = new System.Drawing.Point(263, 0);
-            ribbonControl1.MaxItemId = 1;
-            ribbonControl1.Name = "ribbonControl1";
-            ribbonControl1.Size = new System.Drawing.Size(671, 61);
-            // 
-            // xtraTabbedMdiManager1
-            // 
-            xtraTabbedMdiManager1.MdiParent = this;
-            // 
-            // imgIcons
-            // 
-            imgIcons.ImageStream = (DevExpress.Utils.ImageCollectionStreamer)resources.GetObject("imgIcons.ImageStream");
-            imgIcons.Images.SetKeyName(0, "refresh_16x16.png");
-            imgIcons.Images.SetKeyName(1, "add_16x16.png");
-            imgIcons.Images.SetKeyName(2, "pencolor_16x16.png");
-            imgIcons.Images.SetKeyName(3, "removepivotfield_16x16.png");
-            imgIcons.Images.SetKeyName(4, "exporttoxls_16x16.png");
-            imgIcons.Images.SetKeyName(5, "exporttopdf_16x16.png");
-            imgIcons.Images.SetKeyName(6, "exporttohtml_16x16.png");
-            imgIcons.Images.SetKeyName(7, "printer_16x16.png");
             // 
             // acProductionMain
             // 
@@ -224,6 +202,52 @@
             acAuthority.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             acAuthority.Text = "Yetkiler";
             // 
+            // acOthers
+            // 
+            acOthers.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] { acCalendar, acCalculator });
+            acOthers.Expanded = true;
+            acOthers.Name = "acOthers";
+            acOthers.Text = "Diğer";
+            // 
+            // acCalendar
+            // 
+            acCalendar.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("acCalendar.ImageOptions.SvgImage");
+            acCalendar.Name = "acCalendar";
+            acCalendar.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            acCalendar.Text = "Takvim";
+            // 
+            // acCalculator
+            // 
+            acCalculator.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("acCalculator.ImageOptions.SvgImage");
+            acCalculator.Name = "acCalculator";
+            acCalculator.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            acCalculator.Text = "Hesap Makinesi";
+            // 
+            // ribbonControl1
+            // 
+            ribbonControl1.ExpandCollapseItem.Id = 0;
+            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem });
+            ribbonControl1.Location = new System.Drawing.Point(312, 0);
+            ribbonControl1.MaxItemId = 1;
+            ribbonControl1.Name = "ribbonControl1";
+            ribbonControl1.Size = new System.Drawing.Size(622, 61);
+            // 
+            // xtraTabbedMdiManager1
+            // 
+            xtraTabbedMdiManager1.MdiParent = this;
+            // 
+            // imgIcons
+            // 
+            imgIcons.ImageStream = (DevExpress.Utils.ImageCollectionStreamer)resources.GetObject("imgIcons.ImageStream");
+            imgIcons.Images.SetKeyName(0, "refresh_16x16.png");
+            imgIcons.Images.SetKeyName(1, "add_16x16.png");
+            imgIcons.Images.SetKeyName(2, "pencolor_16x16.png");
+            imgIcons.Images.SetKeyName(3, "removepivotfield_16x16.png");
+            imgIcons.Images.SetKeyName(4, "exporttoxls_16x16.png");
+            imgIcons.Images.SetKeyName(5, "exporttopdf_16x16.png");
+            imgIcons.Images.SetKeyName(6, "exporttohtml_16x16.png");
+            imgIcons.Images.SetKeyName(7, "printer_16x16.png");
+            // 
             // frmHome
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -268,5 +292,8 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement acUsers;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acRoles;
         private DevExpress.XtraBars.Navigation.AccordionControlElement acAuthority;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement acOthers;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement acCalendar;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement acCalculator;
     }
 }

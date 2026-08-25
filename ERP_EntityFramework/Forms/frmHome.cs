@@ -5,9 +5,11 @@ using DevExpress.XtraReports.Design;
 using ERP_EntityFramework_Business.Services;
 using ERP_EntityFramework_Entities;
 using ERP_EntityFramework_UI.CustomerForms;
+using ERP_EntityFramework_UI.Forms;
 using ERP_EntityFramework_UI.UserForms;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 using static DevExpress.CodeParser.CodeStyle.Formatting.Rules;
@@ -43,6 +45,8 @@ namespace ERP_EntityFramework_UI
             acCustomer.Click += AcCustomer_Click;
             acUsers.Click += AcUsers_Click;
             acTedarikci.Click += AcTedarikci_Click;
+            acCalculator.Click += AcCalculator_Click;
+            acCalendar.Click += AcCalendar_Click;
         }
 
         private void InitRibbon()
@@ -439,6 +443,17 @@ namespace ERP_EntityFramework_UI
         private void AcUsers_Click(object sender, EventArgs e)
         {
             OpenMdiForm<frmUser>(_userPage);
+        }
+
+        private void AcCalendar_Click(object sender, EventArgs e)
+        {
+            var calendar = _serviceProvider.GetRequiredService<frmCalendar>();
+            calendar.ShowDialog();
+        }
+
+        private void AcCalculator_Click(object sender, EventArgs e)
+        {
+            Process.Start("calc");
         }
 
         private void AcTedarikci_Click(object sender, EventArgs e)
