@@ -57,4 +57,57 @@ public class UserManager : IUserService
 
         return user;
     }
+
+    public bool UserExists(string username)
+    {
+        return _userDAL.UserExists(username);
+    }
+
+    public bool ResetPassword(string username, string newPassword)
+    {
+        User user = _userDAL.GetUserByUsername(username);
+
+        if (user == null) return false;
+
+        user.PasswordHash = PasswordHelper.HashPassword(newPassword);
+
+        _userDAL.Update(user);
+
+        return true;
+    }
+
+    public User GetUserByUsername(string username)
+    {
+        return _userDAL.GetUserByUsername(username);
+    }
+
+    public void UserAdd(User user)
+    {
+        if (UserExists(user.Username)) return;
+
+        user.PasswordHash = PasswordHelper.HashPassword(user.PasswordHash);
+
+        _userDAL.UserAdd(user);
+
+        Role userRole = _userDAL.GetRoleByName("User");
+
+        if (userRole == null)
+        {
+            userRole = new Role
+            {
+                Name = "User",
+                CreateDate = DateTime.Now,
+                CreatedBy = "SYSTEM",
+                IsActive = true
+            };
+
+            _userDAL.AddRole(userRole);
+        }
+
+        _userDAL.AddUserRole(new UserRole
+        {
+            UserId = user.Id,
+            RoleId = userRole.Id
+        });
+    }
 }

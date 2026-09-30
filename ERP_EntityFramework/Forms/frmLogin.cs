@@ -2,6 +2,7 @@
 using ERP_EntityFramework_Business.Services;
 using ERP_EntityFramework_Entities;
 using ERP_EntityFramework_UI;
+using ERP_EntityFramework_UI.Forms;
 using System;
 using System.Windows.Forms;
 
@@ -13,7 +14,7 @@ namespace ERP_EntityFramework
         private readonly ISessionService _sessionService;
         private EditorButton btnEye, btnUser, btnLock;
 
-        public frmLogin(IUserService userService , ISessionService sessionService)
+        public frmLogin(IUserService userService, ISessionService sessionService)
         {
             InitializeComponent();
 
@@ -32,6 +33,20 @@ namespace ERP_EntityFramework
         {
             btnEye.Click += BtnEye_Click;
             btnLogin.Click += BtnLogin_Click;
+            txtForgot.Click += TxtForgot_Click;
+            txtRegister.Click += TxtRegister_Click;
+        }
+
+        private void TxtRegister_Click(object sender, EventArgs e)
+        {
+            frmRegister register = new frmRegister(_userService);
+            register.ShowDialog();
+        }
+
+        private void TxtForgot_Click(object sender, EventArgs e)
+        {
+            frmReset reset = new frmReset(_userService);
+            reset.ShowDialog();
         }
 
         void Login()

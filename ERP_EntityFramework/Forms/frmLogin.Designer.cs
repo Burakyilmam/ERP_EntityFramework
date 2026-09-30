@@ -52,10 +52,14 @@
             edPassword = new DevExpress.XtraEditors.ButtonEdit();
             edUsername = new DevExpress.XtraEditors.ButtonEdit();
             imgEye = new DevExpress.Utils.ImageCollection(components);
+            txtForgot = new DevExpress.XtraEditors.HyperLinkEdit();
+            txtRegister = new DevExpress.XtraEditors.HyperLinkEdit();
             ((System.ComponentModel.ISupportInitialize)chckRememberMe.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)edPassword.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)edUsername.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgEye).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtForgot.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtRegister.Properties).BeginInit();
             SuspendLayout();
             // 
             // labelControl1
@@ -79,7 +83,7 @@
             btnLogin.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("btnLogin.ImageOptions.Image");
             btnLogin.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             btnLogin.ImageOptions.ImageToTextIndent = 10;
-            btnLogin.Location = new System.Drawing.Point(144, 180);
+            btnLogin.Location = new System.Drawing.Point(144, 169);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new System.Drawing.Size(87, 31);
             btnLogin.TabIndex = 4;
@@ -120,11 +124,35 @@
             imgEye.Images.SetKeyName(0, "show_16x16.png");
             imgEye.Images.SetKeyName(1, "hide_16x16.png");
             // 
+            // txtForgot
+            // 
+            txtForgot.EditValue = "Forgot Your Password ?";
+            txtForgot.Location = new System.Drawing.Point(118, 207);
+            txtForgot.Name = "txtForgot";
+            txtForgot.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            txtForgot.Properties.Appearance.Options.UseBackColor = true;
+            txtForgot.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            txtForgot.Size = new System.Drawing.Size(156, 20);
+            txtForgot.TabIndex = 5;
+            // 
+            // txtRegister
+            // 
+            txtRegister.EditValue = "Register";
+            txtRegister.Location = new System.Drawing.Point(154, 233);
+            txtRegister.Name = "txtRegister";
+            txtRegister.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            txtRegister.Properties.Appearance.Options.UseBackColor = true;
+            txtRegister.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            txtRegister.Size = new System.Drawing.Size(156, 20);
+            txtRegister.TabIndex = 5;
+            // 
             // frmLogin
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(374, 237);
+            ClientSize = new System.Drawing.Size(374, 269);
+            Controls.Add(txtRegister);
+            Controls.Add(txtForgot);
             Controls.Add(edUsername);
             Controls.Add(edPassword);
             Controls.Add(chckRememberMe);
@@ -141,6 +169,8 @@
             ((System.ComponentModel.ISupportInitialize)edPassword.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)edUsername.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgEye).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtForgot.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtRegister.Properties).EndInit();
             ResumeLayout(false);
             PerformLayout();
 
@@ -155,6 +185,8 @@
         private DevExpress.XtraEditors.ButtonEdit edPassword;
         private DevExpress.XtraEditors.ButtonEdit edUsername;
         private DevExpress.Utils.ImageCollection imgEye;
+        private DevExpress.XtraEditors.HyperLinkEdit txtForgot;
+        private DevExpress.XtraEditors.HyperLinkEdit txtRegister;
     }
 }
 
